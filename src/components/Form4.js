@@ -7,7 +7,7 @@ function Form4({ handleSubmit }) {
             <form
                 onSubmit={(e) => {
                     e.preventDefault();
-                    handleSubmit(phone);
+                    handleSubmit("phone",phone);
                 }}
             >
                 <label htmlFor="email">What's your email</label>

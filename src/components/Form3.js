@@ -9,7 +9,7 @@ function Form3({ handleSubmit }) {
                 onSubmit={(e) => {
                     e.preventDefault();
                     setRedirect(true)
-                    handleSubmit(email);
+                    handleSubmit("email",email);
                 }}
             >
                 <label htmlFor="email">What's your email</label>

@@ -9,7 +9,7 @@ function Form2({handleSubmit}) {
             <form onSubmit={(e)=>{
                 setRedirect(true)
                 e.preventDefault()
-                handleSubmit(name)}
+                handleSubmit("college",name)}
                 }>
                 <label htmlFor="email">What is your College's name?</label>
                 <input onChange={e => setName(e.target.value)} value={name} type="text" id="college" placeholder="eg SIES" />

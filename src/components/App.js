@@ -9,30 +9,12 @@ import {Route, Switch} from 'react-router-dom';
 
 const App = () =>{
 
-    const [inputs, setInputs] = useState({
-        name:'',
-        college:'',
-        email:'',
-        phone:null
-    })
+    const [inputs, setInputs] = useState([])
     console.log(inputs)
-    const handleFormOne = (inputName) => {
+    const handleSubmit = (inputType,inputName) => {
         
-        setInputs({...inputs, name: inputName} )
+        setInputs([...inputs, {[inputType]: inputName}] )
     }
-    const handleFormTwo = (inputName) => {
-        
-        setInputs({...inputs, college: inputName} )
-    }
-    const handleFormThree = (inputName) => {
-        
-        setInputs({...inputs, email: inputName} )
-    }
-    const handleFormFour = (inputName) => {
-        
-        setInputs({...inputs, phone: inputName} )
-    }
-
     
     return (
         <div>
@@ -42,16 +24,16 @@ const App = () =>{
                     <Home/>
                 </Route>
                 <Route path="/form1">
-                <Form  handleSubmit={handleFormOne} />
+                <Form  handleSubmit={handleSubmit} />
                 </Route>
                 <Route path="/form2">
-                  <Form2 handleSubmit={handleFormTwo} />  
+                  <Form2 handleSubmit={handleSubmit} />  
                 </Route>
                 <Route path="/form3">
-                  <Form3 handleSubmit={handleFormThree}/>  
+                  <Form3 handleSubmit={handleSubmit}/>  
                 </Route>
                 <Route path="/form4">
-                  <Form4 handleSubmit={handleFormFour}/>  
+                  <Form4 handleSubmit={handleSubmit}/>  
                 </Route>
             </Switch>
             

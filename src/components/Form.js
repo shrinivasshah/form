@@ -9,7 +9,7 @@ function Form({handleSubmit}) {
             <form onSubmit={(e)=>{
                 e.preventDefault()
                 setRedirect(true)
-                handleSubmit(name)    
+                handleSubmit("name",name)    
             }}>
                 <label htmlFor="name">What's your full name?
                 <input onChange={(e)=> setName(e.target.value)} value={name} type="text" id="name" placeholder="John Doe"/>
