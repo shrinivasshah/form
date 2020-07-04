@@ -1,6 +1,8 @@
 import React,{useState} from 'react'
 import {Redirect} from 'react-router-dom'
-function Form({handleSubmit}) {
+import {db} from '../firebase/firebase'
+
+function Form({handleSubmit,id}) {
     const [name, setName] = useState('')
     const [redirect,setRedirect] = useState(false)
     return (
@@ -9,10 +11,13 @@ function Form({handleSubmit}) {
             <form onSubmit={(e)=>{
                 e.preventDefault()
                 setRedirect(true)
-                handleSubmit("name",name)    
+                // db.collection(`students`).doc(`student${id}`).set({
+                //     name
+                // }).then(()=> setName(''))
+                handleSubmit(name)
             }}>
                 <label htmlFor="name">What's your full name?
-                <input onChange={(e)=> setName(e.target.value)} value={name} type="text" id="name" placeholder="John Doe"/>
+                <input autoComplete="off" onChange={(e)=> setName(e.target.value)} value={name} type="text" id="name" placeholder="John Doe"/>
                 </label>
             </form>
             {redirect && <Redirect to="/form2"/>}

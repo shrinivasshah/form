@@ -1,20 +1,28 @@
 import React, { useState } from "react";
-
-function Form4({ handleSubmit }) {
-    const [phone, setPhone] = useState(null);
+import {Redirect} from 'react-router-dom'
+import { db } from "../firebase/firebase";
+function Form3({ handleSubmit,id }) {
+    const [phone, setPhone] = useState("");
+    const [redirect,setRedirect] = useState(false)
     return (
         <div className="input">
             <form
                 onSubmit={(e) => {
                     e.preventDefault();
-                    handleSubmit("phone",phone);
+                    setRedirect(true)
+                    handleSubmit(phone)
+                    console.log(phone)
                 }}
             >
-                <label htmlFor="email">What's your email</label>
-                <input onChange={e=> setPhone(e.target.value)} value={phone} type="text" id="email" placeholder="abc@gmail.com" />
+                <label htmlFor="phone">What's your phone</label>
+                <input autoComplete="off" onChange={e=> {setPhone(e.target.value)
+                        console.log(e.target.value)}} value={phone} type="text" id="phone" placeholder="9702519001" />
             </form>
+                
+            {redirect && <Redirect to="/pick"/>}
         </div>
     );
 }
 
-export default Form4;
+export default Form3;
+

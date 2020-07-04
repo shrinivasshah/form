@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom'
 function Home() {
     return (
         <div className="home container">
-            <h2>Welcome To React Pro Course Registration</h2>
+            <h2>Appdid Course Registration</h2>
             <Link to="/form1">
                 <button>Fill the Form</button>
             </Link>
