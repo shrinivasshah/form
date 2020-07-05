@@ -1,6 +1,6 @@
 import React,{useState} from "react";
 import {Redirect} from 'react-router-dom'
-import {db} from '../firebase/firebase'
+
 function Form2({handleSubmit,id}) {
     const [collegeName,setCollegeName] = useState('')
     const [redirect,setRedirect] = useState(false)

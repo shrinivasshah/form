@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import {Redirect} from 'react-router-dom'
-import { db } from "../firebase/firebase";
+
 function Form3({ handleSubmit,id }) {
     const [phone, setPhone] = useState("");
     const [redirect,setRedirect] = useState(false)

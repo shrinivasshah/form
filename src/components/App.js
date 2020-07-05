@@ -20,12 +20,11 @@ const App = () => {
 
     const [course, setCourse] = useState("");
 
-  const addCourse = (course) => {
-    setCourse(course)
-  }
-  
-    console.log(inputs)
-    const [id, setId] = useState(0);
+    const addCourse = (course) => {
+        setCourse(course);
+    };
+
+    console.log(inputs);
 
     const handleFormOne = (input) => {
         setInputs({ ...inputs, name: input });
@@ -39,14 +38,20 @@ const App = () => {
     const handleFormFour = (input) => {
         setInputs({ ...inputs, phone: input });
         db.collection("students")
-            .doc(`student${id}`)
-            .set({
-              name:inputs.name,
-              college: inputs.college,
-              email: inputs.email,
-              phone: inputs.phone,
-              course
-            }).then(()=> setId(id+1)
+            .add({
+                name: inputs.name,
+                college: inputs.college,
+                email: inputs.email,
+                phone: inputs.phone,
+                course,
+            })
+            .then(() =>
+                setInputs({
+                    name: "",
+                    college: "",
+                    email: "",
+                    phone: "",
+                })
             );
     };
 
@@ -67,15 +72,13 @@ const App = () => {
                     <Form3 handleSubmit={handleFormThree} />
                 </Route>
                 <Route path="/form4">
-                    <Form4
-                        handleSubmit={handleFormFour}
-                    />
+                    <Form4 handleSubmit={handleFormFour} />
                 </Route>
                 <Route path="/pick">
                     <PickCourse course={course} addCourse={addCourse} />
                 </Route>
                 <Route path="/thanks">
-                    <ThankYou/>
+                    <ThankYou />
                 </Route>
             </Switch>
         </div>

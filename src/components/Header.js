@@ -1,5 +1,5 @@
 import React from "react";
-
+import {motion} from 'framer-motion';
 function Header() {
     return (
         <header>
@@ -16,9 +16,12 @@ function Header() {
                     </g>
                 </svg>
             </div>
-            <div className="title">
+            <motion.div
+            initial={{y:-250}}
+            animate={{y:-10}} 
+            className="title">
                 <h1>React Course</h1>
-            </div>
+            </motion.div>
         </header>
     );
 }
