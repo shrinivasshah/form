@@ -22,6 +22,7 @@ const containerVariant = {
 function Form2({ handleSubmit }) {
     const [collegeName, setCollegeName] = useState("");
     const [redirect, setRedirect] = useState(false);
+    
     return (
         <motion.div
             variants={containerVariant}

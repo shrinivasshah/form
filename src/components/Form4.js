@@ -23,6 +23,7 @@ const containerVariant = {
 function Form3({ handleSubmit}) {
     const [phone, setPhone] = useState("");
     const [redirect, setRedirect] = useState(false);
+    
     return (
         <motion.div
             className="input"
@@ -39,7 +40,6 @@ function Form3({ handleSubmit}) {
                     e.preventDefault();
                     setRedirect(true);
                     handleSubmit(phone);
-                    console.log(phone);
                 }}
             >
                 <label htmlFor="phone">What's your phone</label>
@@ -47,7 +47,6 @@ function Form3({ handleSubmit}) {
                     autoComplete="off"
                     onChange={(e) => {
                         setPhone(e.target.value);
-                        console.log(e.target.value);
                     }}
                     value={phone}
                     type="text"

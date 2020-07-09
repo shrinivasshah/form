@@ -20,9 +20,12 @@ const containerVariant = {
     }
 }
 
-function Form({ handleSubmit, id }) {
+function Form({ handleSubmit}) {
+
     const [name, setName] = useState("");
     const [redirect, setRedirect] = useState(false);
+
+    
     return (
         <motion.div className="input"
             variants={containerVariant}

@@ -7,7 +7,7 @@ function ThankYou({ setShowModal, course }) {
         setTimeout(() => {
             setShowModal(true);
         }, 5000);
-    });
+    },[setShowModal]);
 
     return (
         <AnimatePresence>

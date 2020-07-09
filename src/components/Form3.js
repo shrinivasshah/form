@@ -22,6 +22,7 @@ const containerVariant = {
 function Form3({ handleSubmit, id }) {
     const [email, setEmail] = useState("");
     const [redirect, setRedirect] = useState(false);
+    
     return (
         <motion.div
             variants={containerVariant}

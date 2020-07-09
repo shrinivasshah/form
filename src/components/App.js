@@ -5,15 +5,15 @@ import Form from "./Form";
 import Form4 from "./Form4";
 import Form2 from "./Form2";
 import Form3 from "./Form3";
-import Modal from './Modal'
-import { Route, Switch,useLocation } from "react-router-dom";
+import Modal from "./Modal";
+import { Route, Switch, useLocation } from "react-router-dom";
 import { db } from "../firebase/firebase";
 import PickCourse from "./PickCourse";
 import ThankYou from "./ThankYou";
 import { AnimatePresence } from "framer-motion";
 const App = () => {
-  const [showModal, setShowModal] = useState(false)
-    const location = useLocation()
+    const [showModal, setShowModal] = useState(false);
+    const location = useLocation();
     const [inputs, setInputs] = useState({
         name: "",
         college: "",
@@ -22,12 +22,6 @@ const App = () => {
     });
 
     const [course, setCourse] = useState("");
-
-    const addCourse = (course) => {
-        setCourse(course);
-    };
-
-    console.log(inputs);
 
     const handleFormOne = (input) => {
         setInputs({ ...inputs, name: input });
@@ -40,14 +34,20 @@ const App = () => {
     };
     const handleFormFour = (input) => {
         setInputs({ ...inputs, phone: input });
+    };
+
+    const addCourse = (course) => {
+        setCourse(course);
+        const data = {
+            name: inputs.name,
+            college: inputs.college,
+            email: inputs.email,
+            phone: inputs.phone,
+            course,
+        };
+        console.log(data);
         db.collection("students")
-            .add({
-                name: inputs.name,
-                college: inputs.college,
-                email: inputs.email,
-                phone: inputs.phone,
-                course,
-            })
+            .add(data)
             .then(() =>
                 setInputs({
                     name: "",
@@ -61,10 +61,11 @@ const App = () => {
     return (
         <div>
             <Header />
-            <Modal showModal={showModal} setShowModal={setShowModal}/>
-            <AnimatePresence exitBeforeEnter onExitComplete={()=>{
-                setShowModal(false)
-            }}>
+            <Modal showModal={showModal} />
+            <AnimatePresence
+                exitBeforeEnter
+                onExitComplete={() => setShowModal(false)}
+            >
                 <Switch location={location} key={location.key}>
                     <Route exact path="/">
                         <Home />
@@ -85,7 +86,7 @@ const App = () => {
                         <PickCourse course={course} addCourse={addCourse} />
                     </Route>
                     <Route path="/thanks">
-                        <ThankYou course={course} setShowModal={setShowModal}/>
+                        <ThankYou course={course} setShowModal={setShowModal} />
                     </Route>
                 </Switch>
             </AnimatePresence>
